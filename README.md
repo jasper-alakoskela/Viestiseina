@@ -1,0 +1,2 @@
+# Viestiseina
+Harjottelen tietokannan tekemistä
