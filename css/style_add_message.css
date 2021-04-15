@@ -1,0 +1,46 @@
+.error {
+    color: red;
+    font-size: 16px;
+  }
+  
+  .succes {
+    color: #13a100; 
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  input{
+    border: 2px black solid;
+    border-radius: 5px;
+    font-size: large;
+    
+}
+
+textarea{
+    border: 2px black solid;
+    border-radius: 5px;
+    font-size: large;
+
+}
+
+body{
+    background-color: #9fb5ff;
+    font-size: larger;
+    font-family: 'Lato', sans-serif;
+    color: rgb(0, 0, 0);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.form {
+    text-align: center;
+    background-color: #acacac;
+    height: 700px;
+    width: 500px;
+    border: 5px black solid;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
