@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="css/style_add_message.css">
+    <link rel="stylesheet" href="css/style-index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -11,9 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
-
-<body>
 <?php include('functions.php'); ?>
+<body>
+
 <div class="form">
 <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
         <label for="name">Nimi</label>
