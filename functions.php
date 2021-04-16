@@ -31,10 +31,26 @@
             }
         }
 
+        $user_name = $_POST['name'];
+        $message = $_POST['message'];
+
+        // Tietokanta yhteys
+        $connection = new mysqli('localhost','root','','','viestiseina');
+        if ($connection -> connect_error){
+            die('Yhteys Epäonnistui : '.$connection->connect_error);
+        }
+        else {
+            $stmt = $connection->prepare("insert into messages(user_name, message) values(?, ?)");
+            $stmt->bind_param("ss", $user_name, $message);
+            $stmt->execute();
+            $success = "Viesti on lähetetty onnistuneesti!";
+            $stmt->close();
+            $connection->close();
+        }
+
         // Virhe viestien poisto
         if ($name_err == ''  && $message_err == '') {
             unset($_POST["submit"]);
-                $success = "Palaute on lähetetty onnistuneesti!";
                 $name = $message = "";
             }
 
