@@ -1,10 +1,11 @@
 <?php
+
 // Anna muuttujille tyhjät arvot 
     $name_err = $message_err = "";
-    $name = $message = $success = "";
+     $name = $message = $success = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+     if(isset($_POST["send"])) {
+        
         // Validoi nimikenttä
         if (empty($_POST["name"])) {
             $name_err = "Nimi Tarvitaan!";
@@ -31,33 +32,73 @@
             }
         }
 
-        $user_name = $_POST['name'];
-        $message = $_POST['message'];
-
-        // Tietokanta yhteys
-        $connection = new mysqli('localhost','root','','','viestiseina');
-        if ($connection -> connect_error){
-            die('Yhteys Epäonnistui : '.$connection->connect_error);
-        }
-        else {
-            $stmt = $connection->prepare("insert into messages(user_name, message) values(?, ?)");
-            $stmt->bind_param("ss", $user_name, $message);
-            $stmt->execute();
-            $success = "Viesti on lähetetty onnistuneesti!";
-            $stmt->close();
-            $connection->close();
-        }
 
         // Virhe viestien poisto
         if ($name_err == ''  && $message_err == '') {
-            unset($_POST["submit"]);
+            unset($_POST["send"]);
                 $name = $message = "";
+                $succes = "Viesti lähetetty onnistuneesti!";
+            } 
+            
+            // Tietokanta yhteys
+        $dbserverName = "localhost";
+        $dbuserName = "root";
+        $dbpassWord = "";
+        $dbname = "viestiseina";
+
+        $conn = mysqli_connect($dbserverName, $dbuserName, $dbpassWord, $dbname);    
+
+        // tiedot tietokantaan
+        $name = $_POST['name'];
+        $message = $_POST['message'];
+            
+        $sql = "INSERT INTO messages (user_name, message) VALUES ('$name', '$message');";
+        mysqli_query($conn, $sql);
+
+
+    }
+
+
+    // Anna muuttujille tyhjät arvot 
+    $userName_err = $passWord_err = "";
+     $userName = $passWord = "";
+
+     if(isset($_POST["sign-in"])) {
+        
+        // Validoi käyttäjänimikenttä
+        if (empty($_POST["userName"])) {
+            $userName_err = "Käyttäjänimi Tarvitaan!";
+            return false;
+        }
+
+        else if ($userName != "admin") {
+                $name_err = "Väärä Käyttäjänimi!";
+                return false;
+            }
+        
+        // Validoi salasanakenttä
+        if (empty($_POST["passWord"])) {
+            $passWord_err = "Salasana Tarvitaan!";
+            return false;
+        }
+
+        else if ($passWord != "admin") {
+                $passWord_err = "Väärä Salasana!";
+                return false;
             }
 
-        function test_inputs($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
+        // Virhe viestien poisto
+        if ($userName_err == ''  && $passWord_err == '') {
+            unset($_POST["sign-in"]);
+                $name = $message = "";
+            } 
+
+    }
+
+    //Korjaus funktio
+    function test_inputs($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
