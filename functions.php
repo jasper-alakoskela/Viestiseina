@@ -4,7 +4,8 @@
     $name_err = $message_err = "";
      $name = $message = $success = "";
 
-     if(isset($_POST["send"])) {
+
+     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Validoi nimikenttä
         if (empty($_POST["name"])) {
@@ -35,7 +36,7 @@
 
         // Virhe viestien poisto
         if ($name_err == ''  && $message_err == '') {
-            unset($_POST["send"]);
+            unset($_POST["submit"]);
                 $name = $message = "";
                 $succes = "Viesti lähetetty onnistuneesti!";
             } 
@@ -52,48 +53,11 @@
         $name = $_POST['name'];
         $message = $_POST['message'];
             
-        $sql = "INSERT INTO messages (user_name, message) VALUES ('$name', '$message');";
+        $sql = "INSERT INTO hidden_messages (user_name, message) VALUES ('$name', '$message');";
         mysqli_query($conn, $sql);
 
-
     }
 
-
-    // Anna muuttujille tyhjät arvot 
-    $userName_err = $passWord_err = "";
-     $userName = $passWord = "";
-
-     if(isset($_POST["sign-in"])) {
-        
-        // Validoi käyttäjänimikenttä
-        if (empty($_POST["userName"])) {
-            $userName_err = "Käyttäjänimi Tarvitaan!";
-            return false;
-        }
-
-        else if ($userName != "admin") {
-                $name_err = "Väärä Käyttäjänimi!";
-                return false;
-            }
-        
-        // Validoi salasanakenttä
-        if (empty($_POST["passWord"])) {
-            $passWord_err = "Salasana Tarvitaan!";
-            return false;
-        }
-
-        else if ($passWord != "admin") {
-                $passWord_err = "Väärä Salasana!";
-                return false;
-            }
-
-        // Virhe viestien poisto
-        if ($userName_err == ''  && $passWord_err == '') {
-            unset($_POST["sign-in"]);
-                $name = $message = "";
-            } 
-
-    }
 
     //Korjaus funktio
     function test_inputs($data) {

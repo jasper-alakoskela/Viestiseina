@@ -1,4 +1,8 @@
-<?php include('functions.php'); ?>
+<?php
+include("validate_mod.php");
+// VALIDOI JAVASCRIPTILLÄ!!!!!!!!!!!!!
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Viestiseinä</title>
+<title>Kirjautuminen</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
@@ -33,28 +37,27 @@
 }
 </style>
 
-
 <div class="container-fluid ">
 <div class="row my-custom-row justify-content-center align-items-center">
     <div class="col-sm-12">
-        <form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+        <form action="moderation.php" method="POST">
         <div class="input-group mb-3">
         <div class="input-group-prepend">
         </div>
-        <input type="text" class="form-control" placeholder="Nimi" aria-label="Username" aria-describedby="basic-addon1" name="name" value="<?= $name; ?>">
-        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $name_err; ?></span></div><br>
+        <input type="text" class="form-control" placeholder="Käyttäjänimi" aria-label="Username" aria-describedby="basic-addon1" name="userName" value="<?= $userName; ?>">
+        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $userName_err; ?></span></div><br>
         </div>
 
         <div class="input-group">
         <div class="input-group-prepend">
         </div>
-        <textarea placeholder="Lisää viesti" class="form-control" aria-label="With textarea" name="message" value="<?= $message; ?>"></textarea>
-        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $message_err; ?></span></div><br>
+        <input type="password" class="form-control" placeholder="Salasana" aria-label="Password" aria-describedby="basic-addon1" name="passWord" value="<?= $passWord; ?>">
+        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $passWord_err; ?></span></div><br>
         </div>
         <br>
-        <input class="btn btn-primary" type="submit" value="Lähetä" name="submit">
-            <br><br>
-            <br><div class="row justify-content-center align-items-center"><div class="succes"><?= $success; ?></div></div><br> 
+        <input class="btn btn-primary" type="submit" value="Kirjaudu" name="submit">
+            <br>
+            <br>
         </form>
     </div>
 </div>
