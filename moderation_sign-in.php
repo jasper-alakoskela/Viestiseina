@@ -1,9 +1,4 @@
-<?php
-include("validate_mod.php");
-// VALIDOI JAVASCRIPTILLÄ!!!!!!!!!!!!!
-?>
-
-
+<?php include('validate-mod.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,56 +8,103 @@ include("validate_mod.php");
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kirjautuminen</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
 <style>
-    .error {
+    *{
+    box-sizing: border-box;
+}
+
+.error {
     color: red;
     font-size: 16px;
   }
-  
-  .succes {
-    color: #13a100; 
-    font-size: 20px;
-    text-align: center;
-    font-weight: bolder;
-  }
-    .my-custom-row {
-    background-color: #9fb5ff ;
-    font-size: larger;
+
+body {
+    background-color: #6EC5FF;
     font-family: 'Lato', sans-serif;
-    color: rgb(0, 0, 0);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+}
+
+.header {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.form {
+    padding: 30px 40px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+
+.form button {
+    background-color: #266FFF;
+    border: 2px solid #266FFF;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%; 
 }
 </style>
 
-<div class="container-fluid ">
-<div class="row my-custom-row justify-content-center align-items-center">
-    <div class="col-sm-12">
-        <form action="moderation.php" method="POST">
-        <div class="input-group mb-3">
-        <div class="input-group-prepend">
-        </div>
-        <input type="text" class="form-control" placeholder="Käyttäjänimi" aria-label="Username" aria-describedby="basic-addon1" name="userName" value="<?= $userName; ?>">
-        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $userName_err; ?></span></div><br>
-        </div>
-
-        <div class="input-group">
-        <div class="input-group-prepend">
-        </div>
-        <input type="password" class="form-control" placeholder="Salasana" aria-label="Password" aria-describedby="basic-addon1" name="passWord" value="<?= $passWord; ?>">
-        <br><div class="row justify-content-center align-items-center"><span class="error"><?= $passWord_err; ?></span></div><br>
-        </div>
-        <br>
-        <input class="btn btn-primary" type="submit" value="Kirjaudu" name="submit">
-            <br>
-            <br>
-        </form>
+<div class="container">
+    <div class="header">
+        <h2>Lähetä Viesti</h2>
     </div>
-</div>
-</div>
+    <form action="moderation.php" method="POST" class="form" id="form">
+        <div class="form-control">
+            <label>Käyttäjänimi</label>
+            <input type="text" name="user_name">
+        </div>
+        <div class="form-control">
+            <label>Salasana</label>
+            <input type="password" name="password">
+            <br>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <button id="submit" name="submit">Kirjaudu</button>
+    </form>
+</div>
 </body>
 </html>

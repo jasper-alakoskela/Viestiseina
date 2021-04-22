@@ -11,6 +11,15 @@
 
 
     <?php
+    if(isset($_POST["submit"])) {
+   
+        if ($_POST["user_name"] != "admin" && $_POST["password"] != "admin") {
+            echo "<script>alert('Kirjautuminen epäonnistui')</script>";
+            echo "<script>location.href='moderation_sign-in.php'</script>";
+            return false;
+        }
+    }
+
         // Tietokanta yhteys
         $dbserverName = "localhost";
         $dbuserName = "root";

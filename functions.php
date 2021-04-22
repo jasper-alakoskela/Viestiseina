@@ -22,7 +22,7 @@
         
         // Validoi viestikenttä
         if (empty($_POST["message"])) {
-            $message_err = "Palaute Tarvitaan!";
+            $message_err = "Viesti Tarvitaan!";
             return false;
         }
         else {
