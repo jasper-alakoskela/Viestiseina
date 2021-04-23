@@ -1,5 +1,4 @@
   <?php include('functions.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +88,11 @@ body {
     width: 100%; 
 }
 
+.form a{
+    color: #fff;
+    text-decoration: none;
+}
+
 </style>
 
 <div class="container">
@@ -111,7 +115,10 @@ body {
         </div>
 
         <button id="submit" name="submit">Lähetä</button>
+        <br>
+        <button><a href="moderation_sign-in.php">Moderointi</a></button>
     </form>
+
 </div>
 </body>
 </html>
