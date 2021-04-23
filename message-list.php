@@ -1,6 +1,13 @@
 <?php
    $url=$_SERVER['REQUEST_URI'];
-   header("Refresh: 10; URL=$url");
+   header("Refresh: 5; URL=$url");
+   // Tietokanta yhteys
+   $dbserverName = "localhost";
+   $dbuserName = "root";
+   $dbpassWord = "";
+   $dbname = "viestiseina";
+
+   $conn = mysqli_connect($dbserverName, $dbuserName, $dbpassWord, $dbname);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,25 +23,44 @@
 
 
 <style>
-    .my-custom-row {
-    background-color: #9fb5ff ;
-    font-size: larger;
+    body {
+    background-color: #6EC5FF;
     font-family: 'Lato', sans-serif;
-    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 24px;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
     text-align: center;
+    margin: 5px;
+}
+
+.header {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+}
+
+.header h2 {
+    margin: 0;
 }
 </style>
 
-<div class="row my-custom-row justify-content-center align-items-center">
-    <div class="col-sm-12">
-        <?php 
-            // Tietokanta yhteys
-            $dbserverName = "localhost";
-            $dbuserName = "root";
-            $dbpassWord = "";
-            $dbname = "viestiseina";
-
-            $conn = mysqli_connect($dbserverName, $dbuserName, $dbpassWord, $dbname);
+<div class="container">
+    <div class="header">
+        <h2>Viestit</h2>
+    </div>
+    <?php
 
         // Näytä data
         $show_messages = "SELECT * FROM messages;";
@@ -42,17 +68,12 @@
         $checkResult = mysqli_num_rows($result);
         if ($checkResult > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo $row['id'] . "<br>";
-                echo $row['user_name'] . "<br>";
-                echo $row['message'] . "<br>";
-                echo $row['publish_time'] . "<br>";
-                echo "<a href = 'delete.php?id=$row[id]'>Poista</a>" . '<br>';
-                echo "<a href = 'hide.php?id=$row[id]'>Piilota</a>" . '<br><br>';
+                echo $row['user_name'] . "<br><br>";
+                echo $row['message'] . "<br><br>";
+                echo $row['publish_time'] . "<br><hr><br>";
             }
         }
-        ?>
-    </div>
+    ?>
 </div>
-
 </body>
 </html>

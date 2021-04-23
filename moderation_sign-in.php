@@ -1,4 +1,3 @@
-<?php include('validate-mod.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
