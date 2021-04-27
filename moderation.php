@@ -8,13 +8,7 @@
         }
     }
 
-    // Tietokanta yhteys
-    $dbserverName = "localhost";
-    $dbuserName = "root";
-    $dbpassWord = "";
-    $dbname = "viestiseina";
-
-    $conn = mysqli_connect($dbserverName, $dbuserName, $dbpassWord, $dbname);
+    include("mysql_connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

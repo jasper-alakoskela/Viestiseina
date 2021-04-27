@@ -89,7 +89,7 @@ body {
 
 <div class="container">
     <div class="header">
-        <h2>Lähetä Viesti</h2>
+        <h2>Kirjaudu</h2>
     </div>
     <form action="moderation.php" method="POST" class="form" id="form">
         <div class="form-control">
