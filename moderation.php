@@ -8,7 +8,7 @@
         }
     }
 
-    include("mysql_connection.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +84,8 @@ body {
         <h2>Piilotetut Viestit</h2>
     </div>
     <?php
+    include("mysql_connection.php");
+
         // Näytä piilotettu data
         $show_hidden_messages = "SELECT * FROM hidden_messages;";
         $result = mysqli_query($conn, $show_hidden_messages);
@@ -106,6 +108,8 @@ body {
         <h2>Näkyvät Viestit</h2>
     </div>
     <?php
+    include("mysql_connection.php");
+
         // Näytä data
         $show_messages = "SELECT * FROM messages;";
         $result = mysqli_query($conn, $show_messages);
